@@ -16,3 +16,20 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/note/{id}');
+
+Route::get('/note/{id}', [
+    'uses' => 'NotesController@single',
+    'as' => 'note.single'
+]);
+
+Route::get('/notes', [
+    'uses' => 'NotesController@index', 
+    'as' =>'notes'
+]);
+
+Route::get('/folder/{id}', [
+    'uses' => 'FoldersController@single', 
+    'as' => 'folders'
+]);

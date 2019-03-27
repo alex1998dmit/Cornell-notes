@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Note;
 
 class NotesController extends Controller
 {
@@ -14,6 +15,8 @@ class NotesController extends Controller
     public function index()
     {
         //
+        $posts = Note::all();    
+        return response()->json($posts);
     }
 
     /**
@@ -24,6 +27,7 @@ class NotesController extends Controller
     public function create()
     {
         //
+        return view('test.notes.create');
     }
 
     /**
@@ -35,6 +39,16 @@ class NotesController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'theme' => 'required|max:255',
+            'subject' => 'required',
+            'isOpen' => 'required',
+            'leftContent' => 'required',
+            'rightContent' => 'required',
+            'bottomContent' => 'required',
+         ]);
+
+         
     }
 
     /**

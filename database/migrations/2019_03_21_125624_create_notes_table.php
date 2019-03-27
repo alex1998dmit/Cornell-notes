@@ -14,8 +14,8 @@ class CreateNotesTable extends Migration
     public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
-            $table->bigIncrements('id_note');
-            $table->integer('id_subject');
+            $table->bigIncrements('note_id');
+            $table->integer('subject_id');
             $table->boolean('isOpen');
             $table->text('leftColumn');
             $table->text('rightColumn');

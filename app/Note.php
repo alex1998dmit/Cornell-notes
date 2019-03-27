@@ -5,7 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
-{    
+{  
+    
+    protected $fillable = ['isOpen', 'leftColumn', 'rightColumn', 'botterColumn', 'theme'];
+
     public function users() 
     {
         return $this->belongsToMany('App\User');
