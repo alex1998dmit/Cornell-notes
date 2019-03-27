@@ -13,12 +13,15 @@ class CreateFoldersTable extends Migration
      */
     public function up()
     {
-        Schema::create('folders', function (Blueprint $table) {
-            $table->bigIncrements('folder_id');
-            $table->integer('note_id');
-            $table->string('name');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('folders')) {
+            Schema::create('folders', function (Blueprint $table) {
+                $table->engine = 'InnoDB';
+                $table->bigIncrements('id');
+                $table->bigInteger('note_id')->unsigned();
+                $table->timestamps();
+                $table->foreign('note_id')->references('id')->on('notes');
+            });
+        }
     }
 
     /**

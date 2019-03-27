@@ -5,22 +5,22 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
-{  
-    
-    protected $fillable = ['isOpen', 'leftColumn', 'rightColumn', 'botterColumn', 'theme'];
+{
 
-    public function users() 
+    // protected $fillable = ['isOpen', 'leftColumn', 'rightColumn', 'botterColumn', 'theme', 'subject_id'];
+
+    public function user()
     {
         return $this->belongsToMany('App\User');
     }
 
-    public function folders() 
+    public function folder()
     {
         return $this->belongsToMany('App\Folder');
     }
 
-    public function subjects() 
+    public function subject()
     {
-        return $this->hasMany('App\Subject');
+        return $this->belongsTo('App\Subject');
     }
 }

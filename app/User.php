@@ -19,7 +19,6 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
-    protected $primaryKey = 'user_id';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -39,7 +38,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function notes() 
+
+    public function note()
     {
         return $this->belongsToMany('App\Note');
     }

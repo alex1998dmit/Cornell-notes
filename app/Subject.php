@@ -10,8 +10,8 @@ class Subject extends Model
 
     protected $fillable = ['name'];
 
-    public function notes() 
+    public function note()
     {
-        return $this->belongsToMany('App\Note');
+        return $this->hasMany('App\Note');
     }
 }

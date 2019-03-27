@@ -14,9 +14,8 @@ class NotesController extends Controller
      */
     public function index()
     {
-        //
-        $posts = Note::all();    
-        return response()->json($posts);
+        $notes  = Note::all();
+        return response()->json($subjects);
     }
 
     /**
@@ -48,7 +47,7 @@ class NotesController extends Controller
             'bottomContent' => 'required',
          ]);
 
-         
+
     }
 
     /**
