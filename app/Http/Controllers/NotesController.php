@@ -15,7 +15,7 @@ class NotesController extends Controller
     public function index()
     {
         $notes  = Note::all();
-        return response()->json($subjects);
+        return response()->json($notes);
     }
 
     /**
