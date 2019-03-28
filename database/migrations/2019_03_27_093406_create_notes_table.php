@@ -20,7 +20,7 @@ class CreateNotesTable extends Migration
                 $table->boolean('isOpen');
                 $table->text('leftColumn');
                 $table->text('rightColumn');
-                $table->text('botterColumn');
+                $table->text('bottemColumn');
                 $table->string('theme');
                 $table->timestamps();
             });

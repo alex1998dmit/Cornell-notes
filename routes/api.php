@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Subject;
+use App\Notes;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,19 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/note/{id}');
 
-Route::get('/note/{id}', [
-    'uses' => 'NotesController@single',
-    'as' => 'note.single'
-]);
+Route::get('subjects', function() {
+    return Subject::all();
+});
 
-Route::get('/notes', [
-    'uses' => 'NotesController@index', 
-    'as' =>'notes'
-]);
-
-Route::get('/folder/{id}', [
-    'uses' => 'FoldersController@single', 
-    'as' => 'folders'
-]);
+Route::post('subjects', function(Request $request) {
+    dd($request->all);
+    // return Subject::create($request->all);
+});

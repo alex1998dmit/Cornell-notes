@@ -14,6 +14,10 @@ class SubjectsController extends Controller
     public function index()
     {
         //
+        $subjects  = Subject::all();
+        dd($subjects);
+        return $subjects;
+        // return response()->json($subjects);
     }
 
     /**
@@ -35,6 +39,10 @@ class SubjectsController extends Controller
     public function store(Request $request)
     {
         //
+        // $subject = Subject::create($request->all());
+        return 1;
+        dd($request);
+
     }
 
     /**

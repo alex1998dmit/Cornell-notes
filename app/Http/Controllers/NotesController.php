@@ -38,15 +38,6 @@ class NotesController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [
-            'theme' => 'required|max:255',
-            'subject' => 'required',
-            'isOpen' => 'required',
-            'leftContent' => 'required',
-            'rightContent' => 'required',
-            'bottomContent' => 'required',
-         ]);
-
 
     }
 
