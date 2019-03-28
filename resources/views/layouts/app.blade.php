@@ -80,12 +80,13 @@
         @include('flash::message')
         @yield('content')
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/scripts.js')}}"></script>
     {{-- Flashe --}}
-    <script src="//code.jquery.com/jquery.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
         $('#flash-overlay-modal').modal();
     </script>
+
 </body>
 </html>

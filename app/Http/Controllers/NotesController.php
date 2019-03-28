@@ -23,6 +23,11 @@ class NotesController extends Controller
         }
         return $subject_id;
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +47,6 @@ class NotesController extends Controller
     public function create()
     {
         //
-        $this->middleware('auth');
         return view('notes.create');
     }
 
@@ -54,7 +58,6 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->middleware('auth');
         $this->validate($request, [
             'subject' => 'required|max:255',
             'theme' => 'required|max:255',
@@ -98,7 +101,6 @@ class NotesController extends Controller
      */
     public function edit($id)
     {
-        $this->middleware('auth');
         $user_id =Auth::user()->id;
         $user = User::find($user_id);
         $note = Note::find($id);
@@ -127,8 +129,6 @@ class NotesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->middleware('auth');
-
         $this->validate($request,  [
             'theme' => 'required',
             'subject' => 'required',
