@@ -17,10 +17,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="form-group">
                     <label for="theme">Название темы:</label>
                     <input type="text" name="theme" id="theme" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for=""><input type="checkbox" name="tags[]">Открыто ?</label>
                 </div>
             </div>
         </div>

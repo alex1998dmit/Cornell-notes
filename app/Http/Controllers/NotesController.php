@@ -41,22 +41,21 @@ class NotesController extends Controller
     {
         $this->validate($request, [
             'subject' => 'max:255',
-            'theme' => 'max:255',
+            'theme' => 'required|max:255',
         ]);
+
         $user_id = Auth::user()->id;
 
-        $subject = (int)$request->subject;
         $note = Note::create([
-            'subject_id' => $subject,
+            'subject_id' => (int)$request->subject,
             'isOpen' => '1',
-            'leftColumn' => 'leftColumn',
-            'rightColumn' => 'rightColumn',
-            'bottemColumn' => 'bottemColumn',
-            'theme' => 'theme',
+            'leftColumn' => $request->leftColumn,
+            'rightColumn' =>$request->rightColumn,
+            'bottemColumn' => $request->bottemColumn,
+            'theme' => $request->theme,
         ]);
 
         $note->user()->attach($user_id);
-
         return redirect()->back();
     }
 

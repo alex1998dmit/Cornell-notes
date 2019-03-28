@@ -17,10 +17,15 @@ class CreateSubjectsTable extends Migration
             Schema::create('subjects', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id');
+                $table->bigInteger('user_id')->unsigned();
                 $table->string('name');
                 $table->timestamps();
             });
         }
+
+        Schema::table('subjects', function($table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**

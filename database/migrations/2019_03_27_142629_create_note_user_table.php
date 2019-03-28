@@ -15,12 +15,18 @@ class CreateNoteUserTable extends Migration
     {
         if (!Schema::hasTable('note_user')) {
             Schema::create('note_user', function (Blueprint $table) {
+                $table->engine = 'MyISAM';
                 $table->bigIncrements('id');
                 $table->bigInteger('user_id');
                 $table->bigInteger('note_id');
                 $table->timestamps();
 
                 $table->primary(['user_id', 'note_id']);
+            });
+
+            Schema::table('product', function (Blueprint $table) {
+                $table->bigInteger('user_id', true, true)->change();
+                $table->bigInteger('note_id', true, true)->change();
             });
         }
     }
