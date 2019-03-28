@@ -75,10 +75,9 @@
             </div>
         </nav>
     </div>
-
-        <div class="container">
-            @yield('content')
-        </div>
+    <div class="container mt-3 mb-3">
+        @yield('content')
+    </div>
     <script src="{{ asset('js/scripts.js')}}"></script>
 </body>
 </html>
