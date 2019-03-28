@@ -1,51 +1,36 @@
-html, body {
-    background-color: #fff;
-    color: #636b6f;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 200;
-    height: 100vh;
-    margin: 0;
-}
-
-.full-height {
-    height: 100vh;
-}
-
-.flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-
-.position-ref {
+.lection-card {
     position: relative;
+    border: 1px solid #ECEDF0;
+    border-radius: 5px;
 }
 
-.top-right {
+.lection-card:hover {
+    background-color: #ddd;
+}
+
+.lection-card:hover .lection-card__btn {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility ease-in 300ms, opacity ease-in 300ms;
+}
+
+.lection-card__title {
+    font-size: 1.2rem;
+}
+
+.lection-card__btn {
+    position: relative;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility ease-in 300ms, opacity ease-in 300ms;
+}
+
+.block-link {
     position: absolute;
-    right: 10px;
-    top: 18px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
 }
-
-.content {
-    text-align: center;
-}
-
-.title {
-    font-size: 84px;
-}
-
-.links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-.m-b-md {
-    margin-bottom: 30px;
-}
-

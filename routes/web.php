@@ -32,6 +32,9 @@ Route::get('/notes/{userId}','NotesController@index')->name('notes');
 // Route::get('/note/{id}', 'NotesController@show')->name('note');
 Route::get('/note/create', 'NotesController@create')->name('note.create');
 Route::post('/note/store', 'NotesController@store')->name('note.store');
+
+Route::get('/user/{id}', 'UsersController@show')->name('user');
+
 Route::get('/note/edit/{id}', 'NotesController@edit')->name('note.edit');
 Route::post('/note/update/{id}', 'NotesController@update')->name('note.update');
 Route::get('/note/delete/{id}', 'NotesController@delete')->name('note.delete');

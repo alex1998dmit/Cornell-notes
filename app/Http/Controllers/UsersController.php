@@ -46,6 +46,7 @@ class UsersController extends Controller
     public function show($id)
     {
         //
+        return view("users.index");
     }
 
     /**
