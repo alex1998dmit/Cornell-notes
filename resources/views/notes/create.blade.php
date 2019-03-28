@@ -2,6 +2,7 @@
 
 @section('content')
     <form action="{{ route('note.store') }}" method="post">
+        {{ csrf_field() }}
         <div class="row">
             <div class="col-md-12 text-right">
                 <button class="btn btn-success" type="submit">Сохранить</button>
@@ -28,19 +29,19 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <textarea name="leftColumn" id="" cols="40" rows="40" placeholder="Ваши вопросы по ходу лекции основные понятия" class="form-control"></textarea>
+                            <textarea name="leftColumn" id="leftColumn" cols="40" rows="40" placeholder="Ваши вопросы по ходу лекции основные понятия" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="form-group">
-                            <textarea name="rightColumn" id="" cols="100" rows="40" placeholder="Лекция" class="form-control"></textarea>
+                            <textarea name="rightColumn" id="rightColumn" cols="100" rows="40" placeholder="Лекция" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <textarea name="leftColumn" id="" cols="154" rows="10" placeholder="Выводы" class="form-control"></textarea>
+                            <textarea name="bottemColumn" id="bottemColumn" cols="154" rows="10" placeholder="Выводы" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>

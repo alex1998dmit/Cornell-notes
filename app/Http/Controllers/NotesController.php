@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Note;
+use App\User;
+use Auth;
 
 class NotesController extends Controller
 {
@@ -37,8 +39,25 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'subject' => 'max:255',
+            'theme' => 'max:255',
+        ]);
+        $user_id = Auth::user()->id;
 
+        $subject = (int)$request->subject;
+        $note = Note::create([
+            'subject_id' => $subject,
+            'isOpen' => '1',
+            'leftColumn' => 'leftColumn',
+            'rightColumn' => 'rightColumn',
+            'bottemColumn' => 'bottemColumn',
+            'theme' => 'theme',
+        ]);
+
+        $note->user()->attach($user_id);
+
+        return redirect()->back();
     }
 
     /**

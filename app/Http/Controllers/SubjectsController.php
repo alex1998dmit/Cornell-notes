@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Subject;
-use Session;
 
 class SubjectsController extends Controller
 {
@@ -50,6 +49,7 @@ class SubjectsController extends Controller
         $subject = Subject::create([
             'name' => $request->subjectName,
         ]);
+
 
         Session::flash('success', 'Предмет создан');
 
