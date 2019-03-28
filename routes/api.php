@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Subject;
 use App\Notes;
+use App\Http\Controllers\Api as Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('subjects', function() {
-    return Subject::all();
-});
+Route::get('subjects', 'SubjectsController@indexApi');
 
 Route::post('subjects', function(Request $request) {
-    dd($request->all);
+    var_dump($request);
     // return Subject::create($request->all);
 });

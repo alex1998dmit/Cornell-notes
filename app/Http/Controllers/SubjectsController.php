@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Subject;
 
 class SubjectsController extends Controller
 {
@@ -14,10 +15,14 @@ class SubjectsController extends Controller
     public function index()
     {
         //
-        $subjects  = Subject::all();
-        dd($subjects);
-        return $subjects;
+        return view('subjects.index')->with('subjects', Subject::all());
         // return response()->json($subjects);
+    }
+
+    public function indexApi()
+    {
+        $subjects  = Subject::all();
+        return $subjects;
     }
 
     /**

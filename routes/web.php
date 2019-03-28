@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/subjects', 'SubjectsController@index')->name('subjects');
+Route::get('/subjects/create', 'SubjectsController@create')->name('subject.create');
+Route::get('/subject/edit/{id}', 'SubjectsController@edit')->name('subject.edit');
+Route::post('/subject/update/{id}', 'SubjectsController@update')->name('subject.update');
+Route::post('/subjects', 'SubjectsController@store')->name('subject.store');
+
