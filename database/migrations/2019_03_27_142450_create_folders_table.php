@@ -18,6 +18,7 @@ class CreateFoldersTable extends Migration
                 $table->engine = 'InnoDB';
                 $table->bigIncrements('id');
                 $table->bigInteger('note_id')->unsigned();
+                $table->string('name');
                 $table->timestamps();
                 $table->foreign('note_id')->references('id')->on('notes');
             });

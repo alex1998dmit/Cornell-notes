@@ -18,9 +18,9 @@ class CreateNotesTable extends Migration
                 $table->bigIncrements('id', true);
                 $table->bigInteger('subject_id')->unsigned();
                 $table->boolean('isOpen');
-                $table->text('leftColumn');
-                $table->text('rightColumn');
-                $table->text('bottemColumn');
+                $table->mediumText('leftColumn');
+                $table->mediumText('rightColumn');
+                $table->mediumText('bottemColumn');
                 $table->string('theme');
                 $table->timestamps();
             });
