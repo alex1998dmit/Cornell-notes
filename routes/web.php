@@ -26,3 +26,10 @@ Route::post('/subjects/post', 'SubjectsController@store')->name('subject.store')
 Route::get('/subject/edit/{id}', 'SubjectsController@edit')->name('subject.edit');
 Route::post('/subject/update/{id}', 'SubjectsController@update')->name('subject.update');
 Route::get('/subject/{id}', 'SubjectsController@show')->name('subject');
+
+// Route::get('/note/{id}', 'NotesController@single')->name('note');
+Route::get('/note/create', 'NotesController@create')->name('note.create');
+Route::post('/note/store', 'NotesController@store')->name('note.store');
+// Route::get('/note/delete/{id}', 'NotesController')->name('');
+// Route::get('/note/', 'NotesController')->name('note.create');
+
