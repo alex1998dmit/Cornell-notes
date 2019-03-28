@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Subject;
+use Session;
 
 class SubjectsController extends Controller
 {
@@ -14,9 +15,7 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        //
         return view('subjects.index')->with('subjects', Subject::all());
-        // return response()->json($subjects);
     }
 
     public function indexApi()
@@ -32,7 +31,7 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('subjects.create');
     }
 
     /**
@@ -43,11 +42,18 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $subject = Subject::create($request->all());
-        return 1;
-        dd($request);
+        $this->validate($request, [
+            'subjectName' => 'required|max:255',
+        ]);
 
+
+        $subject = Subject::create([
+            'name' => $request->subjectName,
+        ]);
+
+        Session::flash('success', 'Предмет создан');
+
+        return redirect()->back();
     }
 
     /**
@@ -58,7 +64,8 @@ class SubjectsController extends Controller
      */
     public function show($id)
     {
-        //
+        $subject = Subject::find($id);
+        return  view('subjects.single')->with('subject', $subject);
     }
 
     /**
