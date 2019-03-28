@@ -21,9 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('subjects', 'SubjectsController@indexApi');
+// Route::get('subjects', 'SubjectsController@indexApi');
 
-Route::post('subjects', function(Request $request) {
-    var_dump($request);
-    // return Subject::create($request->all);
+Route::get('subjects', function(Request $request) {
+    $user_id = $request->id;
+    $subjects = Subject::find($user_id);
+    return json_encode($subjects);
 });

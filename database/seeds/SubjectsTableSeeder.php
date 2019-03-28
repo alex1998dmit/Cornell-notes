@@ -14,9 +14,10 @@ class SubjectsTableSeeder extends Seeder
     public function run()
     {
         //
-        for ($i=0; $i < 5; $i++) {
+        for ($i=1; $i < 5; $i++) {
 	    	Subject::create([
-	            'name' => str_random(8),
+                'name' => str_random(8),
+                'user_id' => $i,
 	        ]);
     	}
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Note;
 use App\User;
+use App\Subject;
 use Auth;
 
 class NotesController extends Controller
@@ -28,6 +29,7 @@ class NotesController extends Controller
     public function create()
     {
         //
+        $this->middleware('auth');
         return view('notes.create');
     }
 
@@ -39,6 +41,7 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->middleware('auth');
         $this->validate($request, [
             'subject' => 'max:255',
             'theme' => 'required|max:255',
@@ -78,7 +81,19 @@ class NotesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->middleware('auth');
+        $user_id =Auth::user()->id;
+        $user = User::find($user_id);
+        $note = Note::find($id);
+        $subjects = $user->subject;
+
+        foreach ($note->user as $user) {
+            if($user->pivot->user_id === $user_id) {
+                return view('notes.edit')->with('note', $note)->with('subjects', $subjects);
+            }
+        }
+
+        abort(403, 'Unauthorized action.');
     }
 
     /**
@@ -91,6 +106,7 @@ class NotesController extends Controller
     public function update(Request $request, $id)
     {
         //
+
     }
 
     /**
