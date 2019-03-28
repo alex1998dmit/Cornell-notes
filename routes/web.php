@@ -33,3 +33,4 @@ Route::post('/note/store', 'NotesController@store')->name('note.store');
 // Route::get('/note/delete/{id}', 'NotesController')->name('');
 // Route::get('/note/', 'NotesController')->name('note.create');
 
+Route::get('/user/{id}', 'UsersController@show')->name('user');
