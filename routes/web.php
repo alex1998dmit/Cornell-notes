@@ -29,7 +29,7 @@ Route::post('/subject/update/{id}', 'SubjectsController@update')->name('subject.
 Route::get('/subject/{id}', 'SubjectsController@show')->name('subject');
 
 Route::get('/notes/{userId}','NotesController@index')->name('notes');
-Route::get('/note/{id}', 'NotesController@single')->name('note');
+// Route::get('/note/{id}', 'NotesController@single')->name('note');
 Route::get('/note/create', 'NotesController@create')->name('note.create');
 Route::post('/note/store', 'NotesController@store')->name('note.store');
 Route::get('/note/edit/{id}', 'NotesController@edit')->name('note.edit');

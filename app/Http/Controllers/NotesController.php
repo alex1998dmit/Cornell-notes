@@ -89,7 +89,7 @@ class NotesController extends Controller
 
         foreach ($note->user as $user) {
             if($user->pivot->user_id === $user_id) {
-                return view('notes.edit')->with('note', $note)->with('subjects', $subjects);
+                return view('notes.edit')->with('note', $note)->with('subjects', $subjects)->with('currentSubject', $note->subject->name);
             }
         }
 
