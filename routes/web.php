@@ -15,15 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/notes', 'NotesController@index')->name('notes');
-// Route::get('/note/create', 'NotesController@create')->name('note.create');
-// Route::post('/note/store', 'NotesController@store')->name('note.store');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 
 Auth::routes();
 
