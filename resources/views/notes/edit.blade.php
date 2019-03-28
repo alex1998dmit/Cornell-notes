@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('note.store') }}" method="post">
+    <form action="{{ route('note.update', ['id' => $note->id]) }}" method="post">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="theme">Название темы:</label>
-                <input list="themes" name="theme" id="theme" class="form-control" value="{{ $currentSubject }}">
-                    <datalist id="themes">
+                    <label for="subject">Название предмета:</label>
+                    <input list="subjects" name="subject" id="subject" class="form-control" value="{{ $currentSubject }}">
+                    <datalist id="subjects">
                         @foreach ($subjects as $subject)
                             <option value="{{ $subject->name}}">
                                 {{ $subject->name}}
@@ -21,8 +21,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="subject">Название предмета:</label>
-                    <input type="text" name="subject" id="subject" class="form-control" value="{{ $note->theme }}">
+                    <label for="theme">Название темы:</label>
+                    <input type="text" name="theme" id="theme" class="form-control" value="{{ $note->theme }}">
                 </div>
             </div>
         </div>
@@ -32,21 +32,21 @@
                 <div class="form-group">
                     <label for="">Выберите тип конспекта:</label>
                     <div>
-                        <label for=""><input type="radio" name="openIsTrue" 
+                        <label for=""><input type="radio" name="isOpen" value="true"
                             @if($note->isOpen)
-                                checked                                
+                                checked
                             @endif
                             >
                             Открыто
                         </label>
+                    </div>
                     <div>
-                    <div>
-                        <label for=""><input type="radio" name="openIsFalse"
+                        <label for=""><input type="radio" name="isOpen" value="false"
                             @if(!$note->isOpen)
-                                checked                                
+                                checked
                             @endif
                         >
-                            Закрыто                      
+                            Закрыто
                         </label>
                     </div>
                 </div>

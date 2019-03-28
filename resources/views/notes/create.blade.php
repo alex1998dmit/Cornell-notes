@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="theme">Название темы:</label>
-                    <input list="themes" name="theme" id="theme" class="form-control">
-                    <datalist id="themes">
+                    <label for="subject">Название предмета:</label>
+                    <input list="subjects" name="subject" id="subject" class="form-control">
+                    <datalist id="subjects">
                         <option value="Math"></option>
                         <option value="EVM"></option>
                     </datalist>
@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="subject">Название предмета:</label>
-                    <input type="text" name="subject" id="subject" class="form-control">
+                    <label for="theme">Название темы:</label>
+                    <input type="text" name="theme" id="theme" class="form-control">
                 </div>
             </div>
         </div>
@@ -28,12 +28,12 @@
                 <div class="form-group">
                     <label for="">Выберите тип конспекта:</label>
                     <div>
-                        <label for=""><input type="radio" name="openIsTrue">
+                        <label for=""><input type="radio" name="isOpen" value="true">
                             Открыто
                         </label>
                     <div>
                     <div>
-                        <label for=""><input type="radio" name="openIsFalse">
+                        <label for=""><input type="radio" name="isOpen" value="false">
                             Закрыто
                         </label>
                     </div>

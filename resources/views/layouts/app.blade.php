@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-    
+
 
 </head>
 <body>
@@ -76,8 +76,16 @@
         </nav>
     </div>
     <div class="container mt-3 mb-3">
+        {{-- Flash --}}
+        @include('flash::message')
         @yield('content')
     </div>
     <script src="{{ asset('js/scripts.js')}}"></script>
+    {{-- Flashe --}}
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
 </body>
 </html>
