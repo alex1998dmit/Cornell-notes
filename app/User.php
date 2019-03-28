@@ -38,6 +38,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function subject()
+    {
+        return $this->hasMany('App\Subject');
+    }
+
 
     public function note()
     {
