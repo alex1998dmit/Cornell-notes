@@ -10,6 +10,11 @@ use Auth;
 
 class NotesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getSubjectId($subject_name, $user_id)
     {
         if(Subject::where('name', '=', $subject_name)->exists()){
@@ -22,11 +27,6 @@ class NotesController extends Controller
             $subject_id = $newSubject->id;
         }
         return $subject_id;
-    }
-
-    public function __construct()
-    {
-        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.

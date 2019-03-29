@@ -10,6 +10,10 @@ use Auth;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -49,12 +53,20 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
         $user_id = Auth::user()->id;
-        $user = User::find($user_id);
+        $user = User::find($id);
+
+        if(!$user) {
+            abort(404);
+        }
+
         $notes = $user->note;
+        $allowedNotes = $notes->where('isOpen', '=', 1);
         $subjects = $user->subject;
-        return view("users.index")->with('notes', $notes)->with('subjects', $subjects);
+        if($id == $user_id) {
+            return view("users.index")->with('notes', $notes)->with('subjects', $subjects)->with('user', $user);
+        }
+        return view("users.index")->with('notes', $allowedNotes)->with('subjects', $subjects)->with('user', $user);
     }
 
     /**

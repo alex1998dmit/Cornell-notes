@@ -19,15 +19,12 @@ Route::get('/', function() {
     }
 })->name('main');
 
-Route::get('/login', function() {
-
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function(){
+    return redirect()->route('user', ['id' => Auth::user()->id]);
+})->name('home');
 
-Auth::routes();
 
 Route::get('/subjects', 'SubjectsController@index')->name('subjects');
 Route::get('/subjects/create', 'SubjectsController@create')->name('subject.create');

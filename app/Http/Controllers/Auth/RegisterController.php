@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Image;
 
 class RegisterController extends Controller
 {
@@ -63,8 +64,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+        if($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename));
+        } else {
+            $filename = 'default.jpeg';
+        }
+
         return User::create([
             'name' => $data['name'],
+            'avatar' => $filename,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
