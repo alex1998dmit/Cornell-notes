@@ -11,7 +11,17 @@
 |
 */
 
-// Route::get('/', 'NotesController@create')->name('main');
+Route::get('/', function() {
+    if (Auth::check()) {
+        return redirect()->route('user', ['id' => Auth::user()->id]);
+    } else {
+        return redirect()->route('register');
+    }
+})->name('main');
+
+Route::get('/login', function() {
+
+});
 
 Auth::routes();
 

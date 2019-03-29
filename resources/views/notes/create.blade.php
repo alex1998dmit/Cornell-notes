@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-md-8 pr-0">
                     <div class="form-group">
-                        <textarea name="rightColumn" cols="100" rows="40" placeholder="Лекция" class="form-control"></textarea>
+                        <textarea name="rightColumn" id="rightColumn" cols="100" rows="40" placeholder="Лекция" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
