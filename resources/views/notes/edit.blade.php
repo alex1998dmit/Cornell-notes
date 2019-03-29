@@ -76,7 +76,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-right">
-                <button class="btn mr-2" type="submit">Удалить</button>
+                <a class="btn mr-2" type="submit" href="{{ route('note.delete', ['id' => $note->id]) }}}">Удалить</button>
                 <button class="btn btn-success" type="submit">Сохранить</button>
             </div>
         </div>

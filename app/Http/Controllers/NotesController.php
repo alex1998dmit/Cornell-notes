@@ -83,7 +83,7 @@ class NotesController extends Controller
 
         $note->user()->attach($user_id);
         flash('Note had added')->success();
-        return redirect()->back();
+        return redirect()->route('user', ['id' => $user_id]);
     }
 
     /**
@@ -176,6 +176,10 @@ class NotesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user_id =Auth::user()->id;
+        $note = Note::find($id);
+        $note->delete();
+        flash('Note was just trashed')->success();
+        return redirect()->route('user', ['id' => $user_id]);
     }
 }

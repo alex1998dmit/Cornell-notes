@@ -67,7 +67,9 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-right">
-                <button class="btn mr-2" type="submit">Удалить</button>
+                <div>
+                    <a class="btn mr-2" type="submit" href="{{ route('user', ['id' => Auth::id()]) }}}">Удалить</button>
+                </div>
                 <button class="btn btn-success" type="submit">Сохранить</button>
             </div>
         </div>

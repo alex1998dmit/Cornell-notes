@@ -16,7 +16,7 @@
                 <span class="col-3 lection-card__date">{{ $note->updated_at}}</span>
                 <div class="col-auto justify-self-end lection-card__buttons">
                     <a class="btn btn-info lection-card__btn lection-card__edit" href="{{ route('note.edit', ['id' => $note->id])}}">Edit</a>
-                    <a class="btn btn-danger lection-card__btn lection-card__delete" href="{{ route('note.delete', ['id' => $note->id])}}">Delete</a>
+                    <a class="btn btn-danger lection-card__btn lection-card__delete" href="{{ route('note.delete', ['id' => $note->id]) }}">Delete</a>
                 </div>
             </div>
         @endif
