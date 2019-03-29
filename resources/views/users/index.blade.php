@@ -4,13 +4,11 @@
 @foreach($subjects as $subject)
   <div class="lection mt-5">
     <div class="row">
-      <div class="col-auto pr-0">
-        <a data-toggle="collapse" aria-controls="{{ $subject->id }}" aria-expanded="false" href="#{{ $subject->id }}">
-          <i class="fas fa-caret-down mt-2 text-dark dropdown-arrow"></i>
-        </a>
-      </div>
       <div class="col">
-        <h2 class="lection__theme">{{ $subject->name }}</h2>
+        <a class="lection__more d-flex text-dark" data-toggle="collapse" aria-controls="{{ $subject->id }}" aria-expanded="false" href="#{{ $subject->id }}">
+          <i class="fas fa-caret-down mt-2 text-dark dropdown-arrow pr-2"></i>
+          <h2 class="lection__theme">{{ $subject->name }}</h2>
+        </a>
       </div>
       <div class="col col-auto">
         <a href="#" class="btn btn-success">Добавить лекцию</a>
