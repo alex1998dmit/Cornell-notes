@@ -53,9 +53,7 @@
                 </div>
                 <div class="col-md-8 pr-0">
                     <div class="form-group">
-                        <div id="summernote">
-                            {{-- <textarea name="rightColumn" cols="100" rows="40" placeholder="Лекция" class="form-control"></textarea> --}}
-                        </div>
+                        <textarea name="rightColumn" cols="100" rows="40" placeholder="Лекция" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
@@ -74,11 +72,6 @@
             </div>
         </div>
     </form>
-    <script>
-        $(document).ready(function() {
-            $('#summernote').summernote();
-        });
-    </script>
 @endsection
 
 
