@@ -1,3 +1,7 @@
+.lection .collapse.in, .collapsing {
+    display: block;
+}
+
 .lection-card {
     position: relative;
     border: 1px solid #ECEDF0;
@@ -16,6 +20,10 @@
 
 .lection-card__title {
     font-size: 1.2rem;
+}
+
+.lection__more:hover {
+    text-decoration: none;
 }
 
 .lection-card__btn {
@@ -38,3 +46,8 @@
     right: 0;
     z-index: 1;
 }
+
+.dropdown-arrow {
+    cursor: pointer;
+}
+
