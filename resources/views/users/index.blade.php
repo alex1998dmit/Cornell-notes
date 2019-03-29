@@ -3,8 +3,13 @@
 @section('content')
 @foreach($subjects as $subject)
   <div class="lection mt-5">
-    <div class="row">
-    <h2 class="lection__theme">{{ $subject->name }}</h2>
+    <div class="row justify-content-between">
+      <div class="col">
+        <h2 class="lection__theme">{{ $subject->name }}</h2>
+      </div>
+      <div class="col col-auto">
+        <a href="#" class="btn btn-success">Добавить лекцию</a>
+      </div>
       <div class="w-100"></div>
       <hr class="col">
     </div>
