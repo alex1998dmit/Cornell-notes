@@ -38,3 +38,11 @@
     right: 0;
     z-index: 1;
 }
+
+.dropdown-arrow {
+    cursor: pointer;
+}
+
+.lection .collapse.in, .collapsing {
+    display: block;
+}
