@@ -63,7 +63,8 @@ class UsersController extends Controller
         $notes = $user->note;
         $allowedNotes = $notes->where('isOpen', '=', 1);
         $subjects = $user->subject;
-        if($id == $user_id) {
+        if((int) $id == (int) $user_id) {
+            
             return view("users.index")->with('notes', $notes)->with('subjects', $subjects)->with('user', $user);
         }
         return view("users.index")->with('notes', $allowedNotes)->with('subjects', $subjects)->with('user', $user);
