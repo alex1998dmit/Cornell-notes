@@ -1,9 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
-<div>
-    <img src="" alt="">
-</div>
+
 @foreach($subjects as $subject)
   <div class="lection mt-5">
     <div class="row">
