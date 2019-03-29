@@ -60,7 +60,13 @@
 
 
                                 <ul class="dropdown-menu">
-                                    <li>
+                                    <li class="text-center">
+                                        <a href="{{ route('user', ['id' => Auth::user()->id]) }}">
+                                            Профиль
+                                        </a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li class="text-center">
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -70,6 +76,7 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+
                                 </ul>
                             </li>
                         @endguest

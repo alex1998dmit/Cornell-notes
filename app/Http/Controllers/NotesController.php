@@ -54,6 +54,11 @@ class NotesController extends Controller
         return view('notes.create')->with('subjects', $subjects);
     }
 
+    public function createWithSubject($subject)
+    {
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -82,7 +87,7 @@ class NotesController extends Controller
         ]);
 
         $note->user()->attach($user_id);
-        flash('Note had added')->success();
+        flash('Запись добавлена')->success();
         return redirect()->route('user', ['id' => $user_id]);
     }
 
@@ -159,7 +164,7 @@ class NotesController extends Controller
                 $note->bottemColumn = $request->bottemColumn;
                 $note->subject_id = $subject_id;
                 $note->save();
-                flash('Note had changed')->success();
+                flash('Запись успешно изменена')->success();
                 return redirect()->route('user', ['id' => $user_id]);
             }
         }
@@ -179,7 +184,7 @@ class NotesController extends Controller
         $user_id =Auth::user()->id;
         $note = Note::find($id);
         $note->delete();
-        flash('Note was just trashed')->success();
+        flash('Запись успешно удалена')->success();
         return redirect()->route('user', ['id' => $user_id]);
     }
 }
