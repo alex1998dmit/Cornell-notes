@@ -53,27 +53,32 @@
                 </div>
                 <div class="col-md-8 pr-0">
                     <div class="form-group">
-                        <textarea name="rightColumn" id="rightColumn" cols="100" rows="40" placeholder="Лекция" class="form-control"></textarea>
+                        <div id="summernote">
+                            {{-- <textarea name="rightColumn" cols="100" rows="40" placeholder="Лекция" class="form-control"></textarea> --}}
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 pr-0">
                     <div class="form-group">
-                        <textarea name="bottemColumn" id="bottemColumn" cols="154" rows="10" placeholder="Выводы" class="form-control"></textarea>
+                        <textarea name="bottemColumn"  cols="154" rows="10" placeholder="Выводы" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 text-right">
-                <div>
-                    <a class="btn mr-2" type="submit" href="{{ route('user', ['id' => Auth::id()]) }}}">Удалить</button>
-                </div>
+                <a class="btn mr-2" type="submit" href="{{ route('user', ['id' => Auth::id()]) }}}">Удалить</a>
                 <button class="btn btn-success" type="submit">Сохранить</button>
             </div>
         </div>
     </form>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+    </script>
 @endsection
 
 
