@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Note;
+use App\User;
+use App\Subjects;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -46,7 +50,11 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-        return view("users.index");
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
+        $notes = $user->note;
+        $subjects = $user->subject;
+        return view("users.index")->with('notes', $notes)->with('subjects', $subjects);
     }
 
     /**

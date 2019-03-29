@@ -1,11 +1,11 @@
 console.log('here are scripts');
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
-    $('#technig').summernote({
+//     $('#technig').summernote({
 
-      height:300,
+//       height:300,
 
-    });
+//     });
 
-});
+// });

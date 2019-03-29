@@ -47,7 +47,11 @@ class NotesController extends Controller
     public function create()
     {
         //
-        return view('notes.create');
+        $user_id =Auth::user()->id;
+        $user = User::find($user_id);
+        $subjects = $user->subject;
+
+        return view('notes.create')->with('subjects', $subjects);
     }
 
     /**
@@ -156,7 +160,7 @@ class NotesController extends Controller
                 $note->subject_id = $subject_id;
                 $note->save();
                 flash('Note had changed')->success();
-                return redirect()->route('home');
+                return redirect()->route('user', ['id' => $user_id]);
             }
         }
 

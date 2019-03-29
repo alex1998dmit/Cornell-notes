@@ -9,8 +9,11 @@
                     <label for="subject">Название предмета:</label>
                     <input list="subjects" name="subject" id="subject" class="form-control">
                     <datalist id="subjects">
-                        <option value="Math"></option>
-                        <option value="EVM"></option>
+                        @foreach ($subjects as $subject)
+                            <option value="{{ $subject->name}}">
+                                {{ $subject->name}}
+                            </option>
+                        @endforeach
                     </datalist>
                 </div>
             </div>
