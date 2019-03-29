@@ -6,7 +6,7 @@
         <h4>Вы не добавили не одной лекции, хотите добавить ?</h4>
         <div class="row">
             <div class="col">
-                <a href="" class="btn btn-success">Добавить лекцию</a>
+            <a href="{{ route('note.create') }}" class="btn btn-success">Добавить лекцию</a>
             </div>
         </div>
     </div>

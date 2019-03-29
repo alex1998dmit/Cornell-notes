@@ -75,9 +75,9 @@ class NotesController extends Controller
         $note = Note::create([
             'subject_id' => $subject_id,
             'isOpen' => $isOpen,
-            'leftColumn' => $request->leftColumn,
-            'rightColumn' =>$request->rightColumn,
-            'bottemColumn' => $request->bottemColumn,
+            'leftColumn' => ($request->leftColumn) ? $request->leftColumn : 'Здесь ваши вопросы и замечания по ходу лекции',
+            'rightColumn' =>($request->rightColumn) ? $request->rightColumn : 'Здесь ваша основная лекция',
+            'bottemColumn' => ($request->bottemColumn) ? $request->rightColumn : 'Здесь ваши выводы по работе',
             'theme' => $request->theme,
         ]);
 
