@@ -26,6 +26,10 @@
     transition: visibility ease-in 300ms, opacity ease-in 300ms;
 }
 
+.lection-card__edit {
+    color: #fff;
+}
+
 .block-link {
     position: absolute;
     top: 0;
