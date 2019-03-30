@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="subject">Название предмета:</label>
-                    <input list="subjects" name="subject" id="subject" class="form-control">
+                <input list="subjects" name="subject" id="subject" class="form-control" value="{{ $currentSubject }}">
                     <datalist id="subjects">
                         @foreach ($subjects as $subject)
                             <option value="{{ $subject->name}}">

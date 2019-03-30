@@ -27,7 +27,8 @@ Route::get('/home', function(){
 
 
 Route::get('/subjects', 'SubjectsController@index')->name('subjects');
-Route::get('/subjects/create', 'SubjectsController@create')->name('subject.create');
+Route::get('/subjects/create/{subject_id}', 'SubjectsController@create')->name('subject.create');
+// Route::get('/subjects/create/{subject_name}', 'SubjectsController@create')->name('subject.create');
 Route::post('/subjects/post', 'SubjectsController@store')->name('subject.store');
 Route::get('/subject/edit/{id}', 'SubjectsController@edit')->name('subject.edit');
 Route::post('/subject/update/{id}', 'SubjectsController@update')->name('subject.update');

@@ -44,21 +44,15 @@ class NotesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
         $user_id =Auth::user()->id;
         $user = User::find($user_id);
         $subjects = $user->subject;
-
-        return view('notes.create')->with('subjects', $subjects);
+        $currentSubject = ($request->subject_name) ? $request->subject_name : '';
+        return view('notes.create')->with('subjects', $subjects)->with('currentSubject', $currentSubject);
     }
-
-    public function createWithSubject($subject)
-    {
-
-    }
-
     /**
      * Store a newly created resource in storage.
      *
