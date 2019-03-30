@@ -75,15 +75,7 @@ class NotesController extends Controller
         $user_id = Auth::user()->id;
         $isOpen = ($request->isOpen == 'true') ? 1 : 0;
 
-        if(Subject::where('name', '=', $request->subject)->exists()){
-            $subject_id = Subject::where('name', '=', $request->subject)->first()->id;
-        } else {
-            $newSubject = Subject::create([
-                'name' => $request->subject,
-                'user_id' => $user_id,
-            ]);
-            $subject_id = $newSubject->id;
-        }
+        $subject_id = $this->getSubjectId($request->subject, $user_id);
 
         $note = Note::create([
             'subject_id' => $subject_id,

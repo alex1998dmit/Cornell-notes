@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('content')
 
+
+<div class="row" style="border: 1px solid grey; border-radius: 1%; padding: 10px;">
+    <div class="col-md-9">
+        <p>Имя: {{ $user->name }}</p>
+        <p>Email: {{ $user->email }}</p>
+        <p>Лекций: {{ count($user->note)}}</p>
+        <p>Предметов: {{ count($user->subject   )}}</p>
+    </div>
+    <div class="col-md-3">
+        <img src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="" style="width:150px; height: 150px;border-radius: 50%;">
+    </div>
+</div>
 @if(count($notes) == 0)
     <div class="lection mt-5 text-center">
         <h4>Вы не добавили не одной лекции, хотите добавить ?</h4>
