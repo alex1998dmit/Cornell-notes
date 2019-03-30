@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(count($errors))
+    <ul class="alert alert-danger">
+        @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
+    @endif
     <form action="{{ route('note.update', ['id' => $note->id]) }}" method="post">
         {{ csrf_field() }}
         <div class="row">
