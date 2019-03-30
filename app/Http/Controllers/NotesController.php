@@ -61,10 +61,12 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'subject' => 'required|max:255',
             'theme' => 'required|max:255',
+            'isOpen' => 'required'
         ]);
+
 
         $user_id = Auth::user()->id;
         $isOpen = ($request->isOpen == 'true') ? 1 : 0;
