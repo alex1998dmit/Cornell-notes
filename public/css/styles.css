@@ -14,20 +14,34 @@
     transition: visibility ease-in 300ms, opacity ease-in 300ms;
 }
 
-.lection-card__title {
-    font-size: 1.2rem;
-}
-
-.lection__more:hover {
-    text-decoration: none;
-}
-
 .lection-card__btn {
     position: relative;
     z-index: 2;
     visibility: hidden;
     opacity: 0;
     transition: visibility ease-in 300ms, opacity ease-in 300ms;
+}
+
+.lection:hover .lection__theme-delete {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility ease-in 300ms, opacity ease-in 300ms;
+}
+
+.lection__theme-delete {
+    position: relative;
+    z-index: 2;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility ease-in 300ms, opacity ease-in 300ms;
+}
+
+.lection-card__title {
+    font-size: 1.2rem;
+}
+
+.lection__more:hover {
+    text-decoration: none;
 }
 
 .lection-card__edit {
