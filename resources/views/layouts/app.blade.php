@@ -49,8 +49,14 @@
                         <li class="pr-2"><a href="{{ route('login') }}">Вход</a></li>
                         <li><a href="{{ route('register') }}">Регистрация</a></li>
                         @else
+                        <li class="mr-3">
+                            <a class="btn btn-success text-white">Создать лекцию</a>
+                        </li>
                         <li class="dropdown">
-                            <ul class="dropdown-menu">
+                            <a href="#" class="dropdown-toggle menus" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <img class="menu__avatar ml-2 mr-2" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right ">
                                 <li class="text-center">
                                     <a href="{{ route('user', ['id' => Auth::user()->id]) }}">
                                         Профиль
@@ -69,10 +75,6 @@
                                 </li>
 
                             </ul>
-                            <a href="#" class="dropdown-toggle menu" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                {{ Auth::user()->name }}
-                                <img class="menu__avatar ml-2 mr-2" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">                            
-                            </a>
                         </li>
                         @endguest
                     </ul>

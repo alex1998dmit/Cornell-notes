@@ -47,12 +47,21 @@
     cursor: pointer;
 }
 
+.dropdown-toggle::after {
+    display: none;
+}
+
 .menu:hover {
     text-decoration: none;
 }
 
 .menu__avatar {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
+}
+
+.profile__avatar {
+    border-radius: 5px;
+    background-size: cover;
 }
