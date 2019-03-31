@@ -17,7 +17,8 @@
     <div class="col-sm-3">
         <div class="row">
             <img class="profile__avatar img-fluid" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
-            <h2 class="pt-3">Sanya Noob</h2>
+            <h2 class="pt-3 mb-0">Sanya Noob</h2>
+            <p>sanyanoob@gmail.com</p>
             <span class="h5">Количество предметов: 3</span>
             <span class="h5">Количество лекций: 20</span>
         </div>
