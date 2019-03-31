@@ -43,9 +43,6 @@
                             <h2 class="lection__theme">{{ $subject->name }}</h2>
                             </a>
                         </div>
-                        <div class="col col-auto">
-                            <a href="#" class="btn btn-success">Добавить лекцию</a>
-                        </div>
                         <div class="w-100"></div>
                         <hr class="col">
                     </div>
