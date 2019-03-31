@@ -42,7 +42,7 @@
                         <li><a href="{{ route('register') }}">Регистрация</a></li>
                         @else
                         <li class="mr-3">
-                            <a class="btn btn-success text-white">Создать лекцию</a>
+                            <a class="btn btn-success text-white" href="{{ route('note.create') }}">Создать лекцию</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle menus" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
