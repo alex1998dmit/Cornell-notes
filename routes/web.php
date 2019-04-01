@@ -33,6 +33,7 @@ Route::post('/subjects/post', 'SubjectsController@store')->name('subject.store')
 Route::get('/subject/edit/{id}', 'SubjectsController@edit')->name('subject.edit');
 Route::post('/subject/update/{id}', 'SubjectsController@update')->name('subject.update');
 Route::get('/subject/{id}', 'SubjectsController@show')->name('subject');
+Route::get('/subject/delete/{id}', 'SubjectsController@destroy')->name('subject.delete');
 
 Route::get('/notes/{userId}','NotesController@index')->name('notes');
 // Route::get('/note/{id}', 'NotesController@show')->name('note');

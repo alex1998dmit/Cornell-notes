@@ -81,7 +81,7 @@
                                 </a>
                             </div>
                             <div class="col-auto">
-                                <a class="btn btn-danger lection__theme-delete" href="#">Удалить</a>
+                            <a class="btn btn-danger lection__theme-delete" href="{{ route('subject.delete', ['id' => $subject->id])}}">Удалить</a>
                             </div>
                         </div>
                         <div class="row">

@@ -100,5 +100,9 @@ class SubjectsController extends Controller
     public function destroy($id)
     {
         //
+        $subject = Subject::find($id);
+        $subject->delete();
+        $notes = $subject->note;
+        return redirect()->back();
     }
 }

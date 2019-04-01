@@ -53,8 +53,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user_id = Auth::user()->id;
-        $user = User::find($id);
+        $user = Auth::user();
 
         if(!$user) {
             abort(404);
@@ -63,7 +62,7 @@ class UsersController extends Controller
         $notes = $user->note;
         $allowedNotes = $notes->where('isOpen', '=', 1);
         $subjects = $user->subject;
-        if((int) $id == (int) $user_id) {
+        if((int) $id == (int) $user->id) {
             return view("users.index")->with('notes', $notes)->with('subjects', $subjects)->with('user', $user);
         }
         return view("users.index")->with('notes', $allowedNotes)->with('subjects', $subjects)->with('user', $user);

@@ -26,7 +26,7 @@ class CreateNotesTable extends Migration
             });
 
             Schema::table('notes', function($table) {
-                $table->foreign('subject_id')->references('id')->on('subjects');
+                $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');;
             });
         }
     }
