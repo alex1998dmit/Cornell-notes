@@ -36,7 +36,7 @@ Route::get('/subject/{id}', 'SubjectsController@show')->name('subject');
 Route::get('/subject/delete/{id}', 'SubjectsController@destroy')->name('subject.delete');
 
 Route::get('/notes/{userId}','NotesController@index')->name('notes');
-// Route::get('/note/{id}', 'NotesController@show')->name('note');
+Route::get('/note/{id}', 'NotesController@show')->name('note.single');
 Route::get('/note/create', 'NotesController@create')->name('note.create');
 Route::post('/note/store', 'NotesController@store')->name('note.store');
 Route::get('/note/edit/{id}', 'NotesController@edit')->name('note.edit');
