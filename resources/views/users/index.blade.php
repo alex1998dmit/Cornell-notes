@@ -5,13 +5,13 @@
     <div class="col-sm-3">
         <div class="row">
             <img class="profile__avatar img-fluid" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
-            <h2 class="pt-3 mb-0">Sanya Noob</h2>
+        <h2 class="pt-3 mb-0"> {{ Auth::user()->name }}</h2>
             <div class="w-100"></div>
-            <p>sanyanoob@gmail.com</p>
+            <p>{{ Auth::user()->email }}</p>
             <div class="w-100"></div>
-            <span class="h5">Предметов: 3</span>
+            <span class="h5">Предметов: {{ count($subjects)}}</span>
             <div class="w-100"></div>
-            <span class="h5">Лекций: 20</span>
+            <span class="h5">Лекций: {{ count($notes) }}</span>
         </div>
     </div>
     <div class="col-sm-9">
@@ -81,7 +81,8 @@
                                 </a>
                             </div>
                             <div class="col-auto">
-                            <a class="btn btn-danger lection__theme-delete" href="{{ route('subject.delete', ['id' => $subject->id])}}">Удалить</a>
+                                    <a class="btn btn-success lection__theme-delete" href="{{ route('note.create', ['subject_name' => $subject->name])}}">Добавить лекцию</a>
+                                    <a class="btn btn-danger lection__theme-delete" href="{{ route('subject.delete', ['id' => $subject->id])}}">Удалить</a>
                             </div>
                         </div>
                         <div class="row">

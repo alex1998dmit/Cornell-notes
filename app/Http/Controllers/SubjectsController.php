@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Subject;
+use Session;
 
 class SubjectsController extends Controller
 {
@@ -52,7 +53,6 @@ class SubjectsController extends Controller
 
 
         Session::flash('success', 'Предмет создан');
-
         return redirect()->back();
     }
 
@@ -99,10 +99,10 @@ class SubjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
         $subject = Subject::find($id);
         $subject->delete();
         $notes = $subject->note;
+        Session::flash('success', 'Предмет и все его лекции удалены');
         return redirect()->back();
     }
 }
