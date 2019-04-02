@@ -26,21 +26,21 @@ Route::get('/home', function(){
 })->name('home');
 
 
+
 Route::get('/subjects', 'SubjectsController@index')->name('subjects');
 Route::get('/subjects/create/{subject_id}', 'SubjectsController@create')->name('subject.create');
-// Route::get('/subjects/create/{subject_name}', 'SubjectsController@create')->name('subject.create');
 Route::post('/subjects/post', 'SubjectsController@store')->name('subject.store');
 Route::get('/subject/edit/{id}', 'SubjectsController@edit')->name('subject.edit');
 Route::post('/subject/update/{id}', 'SubjectsController@update')->name('subject.update');
-Route::get('/subject/{id}', 'SubjectsController@show')->name('subject');
+// Route::get('/subject/{id}', 'SubjectsController@show')->name('subject');
 Route::get('/subject/delete/{id}', 'SubjectsController@destroy')->name('subject.delete');
 
-Route::get('/notes/{userId}','NotesController@index')->name('notes');
-Route::get('/note/{id}', 'NotesController@show')->name('note.single');
+
 Route::get('/note/create', 'NotesController@create')->name('note.create');
 Route::post('/note/store', 'NotesController@store')->name('note.store');
 Route::get('/note/edit/{id}', 'NotesController@edit')->name('note.edit');
 Route::post('/note/update/{id}', 'NotesController@update')->name('note.update');
 Route::get('/note/delete/{id}', 'NotesController@destroy')->name('note.delete');
+Route::get('/notes/{id}', 'NotesController@show')->name('note.show');
 
 Route::get('/user/{id}', 'UsersController@show')->name('user');

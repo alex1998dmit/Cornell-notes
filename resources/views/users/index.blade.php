@@ -58,7 +58,7 @@
                             <div class="row collapse" id="all-subjects">
                             @foreach ($notes as $note)
                                 <div class="row col-12 ml-0 align-items-center justify-content-between pt-2 pb-2 mb-2 lection-card">
-                                    <a href="#" class="block-link"></a>
+                                    <a href="{{ route('note.show', ['id' => $note->id]) }}" class="block-link"></a>
                                     <span class="col-5 lection-card__title">{{ $note->theme }}</span>
                                     <span class="col-2 lection-card__date">{{ $note->updated_at}}</span>
                                     <div class="col-auto justify-self-end lection-card__buttons">
