@@ -17,7 +17,6 @@ class CreateNotesTable extends Migration
             Schema::create('notes', function (Blueprint $table) {
                 $table->bigIncrements('id', true);
                 $table->bigInteger('subject_id')->unsigned();
-                $table->boolean('isOpen');
                 $table->mediumText('leftColumn');
                 $table->mediumText('rightColumn');
                 $table->mediumText('bottemColumn');
