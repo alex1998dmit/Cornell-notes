@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<!--<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -81,5 +81,47 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
+<main role="main">
+    <div class="container">
+        <div class="row justify-content-center mt-5 pb-5">
+            <div class="col-12 col-sm-8 col-md-7 col-lg-4">
+                <div class="card register-card shadow border-top border-primary">
+                    <div class="card-body">
+                        <h1 class="h3 mb-4 mt-3 text-center">{{ __('Регистрация') }}</h1>
+                        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group string required">
+                                <input class="form-control string form-control{{ $errors->has('name') ? ' is-invalid' : '' }} required" autofocus="autofocus" placeholder="{{ __('имя') }}" type="text" name="name" id="name" value="{{ old('name') }}">
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">{{ $errors->first('name') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group email required">
+                                <input class="form-control string email form-control{{ $errors->has('email') ? ' is-invalid' : '' }} required" placeholder="{{ __('e-mail') }}" type="email" name="email" id="email" value="{{ old('email') }}">
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">{{ $errors->first('email') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group password required">
+                                <input class="form-control password form-control{{ $errors->has('password') ? ' is-invalid' : '' }} required" placeholder="{{ __('пароль') }}" type="password" name="password" id="password">
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">{{ $errors->first('password') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group password required">
+                                <input class="form-control password form-control required" placeholder="{{ __('введите пароль ещё раз') }}" type="password" name="password-confirm" id="password_confirmation">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                        </form>
+                    </div>
+                    <div class="card-footer py-4 border-top-0 text-center">
+                        <span class="text-muted">Уже есть аккаунт?</span>
+                        <span class="font-weight-bolder"><a class="x-link-only-hover" href="{{ route('login') }}">Войти</a></span>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 @endsection
