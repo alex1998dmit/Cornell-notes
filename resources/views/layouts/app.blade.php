@@ -82,11 +82,7 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="{{ asset('js/scripts.js')}}"></script>
-<<<<<<< HEAD
     {{-- Flash --}}
-=======
-    {{-- Flashe --}}
->>>>>>> 1a6c72ab85f6ddeeb34b247e7c33ee0e4ea97dd3
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
         $('#flash-overlay-modal').modal();
