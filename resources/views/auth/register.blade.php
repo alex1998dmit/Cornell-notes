@@ -110,7 +110,7 @@
                                 @endif
                             </div>
                             <div class="form-group password required">
-                                <input class="form-control password form-control required" placeholder="{{ __('введите пароль ещё раз') }}" type="password" name="password-confirm" id="password_confirmation">
+                                <input class="form-control password form-control required" placeholder="{{ __('введите пароль ещё раз') }}" type="password" name="password_confirmation" id="password_confirmation">
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
                         </form>
