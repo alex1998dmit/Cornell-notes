@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label for="note-title">Предмет</label>
-                <input class="form-control" type="text" id="subject" name="subject" list="subjects"  value="{{ $note->theme }}">
+                <input class="form-control" type="text" id="subject" name="subject" list="subjects"  value="{{ $note->subject->name }}">
                 <datalist id="subjects">
                     @foreach ($subjects as $subject)
                         <option value="{{ $subject->name}}">
