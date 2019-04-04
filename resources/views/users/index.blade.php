@@ -51,7 +51,7 @@
                                     </a>
                                 </div>
                                 <div class="col-auto">
-                                    {{-- <a class="btn btn-danger lection__theme-delete" href="#">Удалить</a> --}}
+                                    {{-- <a class="btn btn-danger lection__theme-delete text-white" href="#">Удалить</a> --}}
                                 </div>
                             </div>
                             <div class="row">
@@ -66,7 +66,7 @@
                                     <div class="col-auto justify-self-end lection-card__buttons">
                                         <a class="btn btn-info lection-card__btn lection-card__edit" href="{{ route('note.edit', ['id' => $note->id])}}">Редактировать</a>
                                         {{-- href="{{ route('note.delete', ['id' => $note->id]) }}" --}}
-                                    <a class="btn btn-danger lection-card__btn lection-card__delete delete-button" data-id={{ $note->id }}>Удалить</a>
+                                    <a class="btn btn-danger lection-card__btn lection-card__delete delete-button text-white" data-id={{ $note->id }}>Удалить</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -85,7 +85,7 @@
                             </div>
                             <div class="col-auto">
                                     <a class="btn btn-success lection__theme-delete" href="{{ route('note.create', ['subject_name' => $subject->name])}}">Добавить лекцию</a>
-                                    <a class="btn btn-danger lection__theme-delete theme-delete delete-button-subject" data-id={{ $subject->id}}>Удалить</a>
+                                    <a class="btn btn-danger lection__theme-delete theme-delete delete-button-subject text-white" data-id={{ $subject->id}}>Удалить</a>
                             </div>
                         </div>
                         <div class="row">
@@ -100,7 +100,7 @@
                                     <span class="col-2 lection-card__date">{{ $note->updated_at}}</span>
                                     <div class="col-auto justify-self-end lection-card__buttons">
                                         <a class="btn btn-info lection-card__btn lection-card__edit" href="{{ route('note.edit', ['id' => $note->id])}}">Редактировать</a>
-                                        <a class="btn btn-danger delete-button lection-card__btn lection-card__delete" data-id={{ $note->id }}>Удалить</a>
+                                        <a class="btn btn-danger delete-button lection-card__btn lection-card__delete text-white" data-id={{ $note->id }}>Удалить</a>
                                     </div>
                                 </div>
                             @endif
