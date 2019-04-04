@@ -86,7 +86,7 @@
     <div class="container">
         <div class="row justify-content-center mt-5 pb-5">
             <div class="col-12 col-sm-8 col-md-7 col-lg-4">
-                <div class="card register-card shadow border-top border-primary">
+                <div class="card border-0 shadow border-top border-primary">
                     <div class="card-body">
                         <h1 class="h3 mb-4 mt-3 text-center">{{ __('Регистрация') }}</h1>
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">

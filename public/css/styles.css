@@ -7,85 +7,10 @@ body {
     background-color: whitesmoke !important;
 }
 
-.register-card {
-    border: none;
-}
-
 .menu-avatar {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-}
-
-.lection-card {
-    position: relative;
-    border: 1px solid #ECEDF0;
-    border-radius: 5px;
-}
-
-.lection-card:hover {
-    background-color: #ddd;
-}
-
-.lection-card:hover .lection-card__btn {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility ease-in 300ms, opacity ease-in 300ms;
-}
-
-.lection-card__btn {
-    position: relative;
-    z-index: 2;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility ease-in 300ms, opacity ease-in 300ms;
-}
-
-.lection:hover .lection__theme-delete {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility ease-in 300ms, opacity ease-in 300ms;
-}
-
-.lection__theme-delete {
-    position: relative;
-    z-index: 2;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility ease-in 300ms, opacity ease-in 300ms;
-}
-
-.lection-card__title {
-    font-size: 1.2rem;
-}
-
-.lection__more:hover {
-    text-decoration: none;
-}
-
-.lection-card__edit {
-    color: #fff;
-}
-
-.block-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 1;
-}
-
-.dropdown-arrow {
-    cursor: pointer;
-}
-
-.dropdown-toggle::after {
-    display: none;
-}
-
-.menu:hover {
-    text-decoration: none;
 }
 
 .profile__avatar {
