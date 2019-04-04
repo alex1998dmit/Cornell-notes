@@ -6,6 +6,8 @@
         <div class="row">
             <img class="profile__avatar img-fluid" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
         <h2 class="pt-3 mb-0"> {{ Auth::user()->name }}</h2>
+        {{-- !!!!! --}}
+        {{-- <h2 class="pt-3 mb-0"> {{ Auth::user()->surname }}</h2> --}}
             <div class="w-100"></div>
             <p>{{ Auth::user()->email }}</p>
             <div class="w-100"></div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
 
-    protected $fillable = ['isOpen', 'leftColumn', 'rightColumn', 'bottemColumn', 'theme', 'subject_id'];
+    protected $fillable = ['leftColumn', 'rightColumn', 'bottemColumn', 'theme', 'subject_id'];
 
     public function user()
     {
