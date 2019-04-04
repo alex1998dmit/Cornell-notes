@@ -48,7 +48,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="menu__avatar" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
+                                <img class="menu-avatar" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="{{ route('user', ['id' => Auth::user()->id]) }}">Профиль</a>
@@ -81,7 +81,7 @@
         </nav>
     </div>
     <div class="row">
-        <div class="container">
+        <div class="container mt-3">
             @yield('content')
         </div>
     </div>
