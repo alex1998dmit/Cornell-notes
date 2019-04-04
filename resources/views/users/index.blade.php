@@ -59,13 +59,14 @@
                             </div>
                             <div class="row collapse" id="all-subjects">
                             @foreach ($notes as $note)
-                                <div class="row col-12 ml-0 align-items-center justify-content-between pt-2 pb-2 mb-2 lection-card">
+                                <div class="row col-12 ml-0 align-items-center justify-content-between pt-2 pb-2 mb-2 lection-card" data-noteid={{ $note->id }} >
                                     <a href="{{ route('note.show', ['id' => $note->id]) }}" class="block-link"></a>
                                     <span class="col-5 lection-card__title">{{ $note->theme }}</span>
                                     <span class="col-2 lection-card__date">{{ $note->updated_at}}</span>
                                     <div class="col-auto justify-self-end lection-card__buttons">
                                         <a class="btn btn-info lection-card__btn lection-card__edit" href="{{ route('note.edit', ['id' => $note->id])}}">Редактировать</a>
-                                        <a class="btn btn-danger lection-card__btn lection-card__delete" href="{{ route('note.delete', ['id' => $note->id]) }}">Удалить</a>
+                                        {{-- href="{{ route('note.delete', ['id' => $note->id]) }}" --}}
+                                    <a class="btn btn-danger lection-card__btn lection-card__delete delete-button" data-id={{ $note->id }}>Удалить</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -84,7 +85,8 @@
                             </div>
                             <div class="col-auto">
                                     <a class="btn btn-success lection__theme-delete" href="{{ route('note.create', ['subject_name' => $subject->name])}}">Добавить лекцию</a>
-                                    <a class="btn btn-danger lection__theme-delete" href="{{ route('subject.delete', ['id' => $subject->id])}}">Удалить</a>
+                                    {{-- href="{{ route('subject.delete', ['id' => $subject->id])}}" --}}
+                                    <a class="btn btn-danger lection__theme-delete" data-id={{ $subject->id}}>Удалить</a>
                             </div>
                         </div>
                         <div class="row">
@@ -112,5 +114,56 @@
             @endif
         </div>
     </div>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+
+        let url_note_delete = "{{ route('note.delete') }}";
+        $(document).on("click", '.delete-button', function(e){
+            e.preventDefault();
+            let id = $(this).data('id');
+            $.ajax({
+                    url:url_note_delete,
+                    type: 'post',
+                    data:{ id: id, _token: CSRF_TOKEN },
+                    dataType: 'json',
+                    success: function(data) {
+                        // console.log();
+                        $(` div[data-noteid= ${data.id} ] `).remove();
+                        // $('#unrepost_button').replaceWith(` <input type="submit" value="Сохранить" class="btn btn-info" id="repost_button" />`);
+                        // disable = false;
+                    },
+                });
+
+        });
+
+    $(document).on("ready", function() {
+        $(document).on("click", '.delete-button', function(e){
+                e.preventDefault();
+                console.log('press');
+                console.log($(this).data('id'));
+                // disable = true;
+                // $.ajax({
+                //     url:url_notsave,
+                //     type: 'POST',
+                //     data:{ id: id, _token: CSRF_TOKEN },
+                //     dataType: 'json',
+                //     success: function(data) {
+                //         $('#unrepost_button').replaceWith(` <input type="submit" value="Сохранить" class="btn btn-info" id="repost_button" />`);
+                //         disable = false;
+                //     },
+                // });
+                return false;
+        });
+    });
+
+
+    </script>
     @endsection
 </div>
