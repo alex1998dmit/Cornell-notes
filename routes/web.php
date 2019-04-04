@@ -44,7 +44,7 @@ Route::get('/note/create', 'NotesController@create')->name('note.create');
 Route::post('/note/store', 'NotesController@store')->name('note.store');
 Route::get('/note/edit/{id}', 'NotesController@edit')->name('note.edit');
 Route::post('/note/update/{id}', 'NotesController@update')->name('note.update');
-// Route::get('/note/delete/{id}', 'NotesController@destroy')->name('note.delete');
+Route::get('/note/trash/{id}', 'NotesController@destroy')->name('note.trash');
 Route::post('/admin/categories/store', function(Request $request) {
     $name = Input::get('name');
     $avatar = Input::file('image');
