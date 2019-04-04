@@ -2,9 +2,9 @@
     <a href="{{ route('note.show', ['id' => $note->id]) }}" class="block-link"></a>
     <div class="card-header bg-primary text-white d-flex">
         <span class="h4 mb-0">{{ $note->theme }}</span>
-        <div class="ml-auto">
-            <a class="card-link lection-card__link link_white  pr-3" href="{{ route('note.edit', ['id' => $note->id])}}" role="button"><i class="fas fa-pen"></i></a>
-            <a class="card-link lection-card__link link_white  delete-button" href="#" role="button" data-id={{ $note->id }}>
+        <div class="ml-auto d-flex">
+            <a class="lection-card__link link_white  pr-3" href="{{ route('note.edit', ['id' => $note->id])}}" role="button"><i class="fas fa-pen"></i></a>
+            <a class="lection-card__link link_white  delete-button" href="#" role="button" data-id={{ $note->id }}>
                 <i class="fas fa-times"></i>
             </a>
         </div>
