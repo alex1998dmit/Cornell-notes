@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Input;
 use App\Note;
+use App\Subject;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,14 @@ Route::post('/note/delete', function(Request $request) {
     $note->delete();
     return json_encode(['id' => $id]);
 })->name('note.delete');
+
+Route::post('/subject/delete', function(Request $request) {
+
+    $id = Input::get('id');
+    $subject = Subject::find($id);
+    $subject->delete();
+    return json_encode(['id' => $id]);
+})->name('subject.delete');
 
 
 Route::get('/notes/{id}', 'NotesController@show')->name('note.show');

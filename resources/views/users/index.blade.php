@@ -51,7 +51,7 @@
                                     </a>
                                 </div>
                                 <div class="col-auto">
-                                    <a class="btn btn-danger lection__theme-delete" href="#">Удалить</a>
+                                    {{-- <a class="btn btn-danger lection__theme-delete" href="#">Удалить</a> --}}
                                 </div>
                             </div>
                             <div class="row">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="tab-pane" id="subjects">
                     @foreach($subjects as $subject)
-                    <div class="lection mb-4">
+                    <div class="lection mb-4" data-subid = {{ $subject->id }}>
                         <div class="row">
                             <div class="col">
                                 <a class="lection__more d-flex text-dark" data-toggle="collapse" href="#subject{{ $subject->id }}" role="button" aria-expanded="false" aria-controls="subject{{ $subject->id }}">
@@ -85,8 +85,7 @@
                             </div>
                             <div class="col-auto">
                                     <a class="btn btn-success lection__theme-delete" href="{{ route('note.create', ['subject_name' => $subject->name])}}">Добавить лекцию</a>
-                                    {{-- href="{{ route('subject.delete', ['id' => $subject->id])}}" --}}
-                                    <a class="btn btn-danger lection__theme-delete" data-id={{ $subject->id}}>Удалить</a>
+                                    <a class="btn btn-danger lection__theme-delete theme-delete delete-button-subject" data-id={{ $subject->id}}>Удалить</a>
                             </div>
                         </div>
                         <div class="row">
@@ -95,13 +94,13 @@
                         <div class="row collapse" id="subject{{ $subject->id }}">
                         @foreach ($notes as $note)
                             @if($note->subject_id == $subject->id)
-                                <div class="row col-12 ml-0 align-items-center justify-content-between pt-2 pb-2 mb-2 lection-card">
+                                <div class="row col-12 ml-0 align-items-center justify-content-between pt-2 pb-2 mb-2 lection-card" data-noteid={{ $note->id }}>
                                     <a href="#" class="block-link"></a>
                                     <span class="col-5 lection-card__title">{{ $note->theme }}</span>
                                     <span class="col-2 lection-card__date">{{ $note->updated_at}}</span>
                                     <div class="col-auto justify-self-end lection-card__buttons">
                                         <a class="btn btn-info lection-card__btn lection-card__edit" href="{{ route('note.edit', ['id' => $note->id])}}">Редактировать</a>
-                                        <a class="btn btn-danger lection-card__btn lection-card__delete" href="{{ route('note.delete', ['id' => $note->id]) }}">Удалить</a>
+                                        <a class="btn btn-danger delete-button lection-card__btn lection-card__delete" data-id={{ $note->id }}>Удалить</a>
                                     </div>
                                 </div>
                             @endif
@@ -115,6 +114,7 @@
         </div>
     </div>
     <script>
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -123,8 +123,9 @@
 
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-
         let url_note_delete = "{{ route('note.delete') }}";
+        let url_subject_delete = "{{ route('subject.delete') }}";
+
         $(document).on("click", '.delete-button', function(e){
             e.preventDefault();
             let id = $(this).data('id');
@@ -134,36 +135,25 @@
                     data:{ id: id, _token: CSRF_TOKEN },
                     dataType: 'json',
                     success: function(data) {
-                        // console.log();
                         $(` div[data-noteid= ${data.id} ] `).remove();
-                        // $('#unrepost_button').replaceWith(` <input type="submit" value="Сохранить" class="btn btn-info" id="repost_button" />`);
-                        // disable = false;
                     },
                 });
+            });
 
+        $(document).on("click", '.delete-button-subject', function(e){
+            e.preventDefault();
+            let id = $(this).data('id');
+            $.ajax({
+                url:url_subject_delete,
+                type: 'post',
+                data:{ id: id, _token: CSRF_TOKEN },
+                dataType: 'json',
+                success: function(data) {
+                    $(` div[data-subid= ${data.id} ] `).remove();
+                },
+            });
         });
-
-    $(document).on("ready", function() {
-        $(document).on("click", '.delete-button', function(e){
-                e.preventDefault();
-                console.log('press');
-                console.log($(this).data('id'));
-                // disable = true;
-                // $.ajax({
-                //     url:url_notsave,
-                //     type: 'POST',
-                //     data:{ id: id, _token: CSRF_TOKEN },
-                //     dataType: 'json',
-                //     success: function(data) {
-                //         $('#unrepost_button').replaceWith(` <input type="submit" value="Сохранить" class="btn btn-info" id="repost_button" />`);
-                //         disable = false;
-                //     },
-                // });
-                return false;
-        });
-    });
-
-
+        
     </script>
     @endsection
 </div>
