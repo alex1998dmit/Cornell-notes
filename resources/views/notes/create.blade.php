@@ -40,7 +40,7 @@
                 <label for="">Резюме</label>
                 <textarea class="form-control" name="bottemColumn" id="bottemColumn" rows="10"></textarea>
             </div>
-            <button class="btn btn-primary" type="submit">Сохранить</button>
+            <button class="btn btn-success" type="submit">Сохранить</button>
         </form>
     </main>
 @endsection

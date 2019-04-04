@@ -46,7 +46,7 @@
                     {{$note->bottembColumn}}
                 </textarea>
             </div>
-            <button class="btn btn-primary" type="submit">Сохранить</button>
+            <button class="btn btn-success" type="submit">Сохранить</button>
             <a class="btn btn-danger text-white" href="{{ route('note.delete', ['id' => $note->id]) }}}">Удалить</a>
         </form>
     </main>
