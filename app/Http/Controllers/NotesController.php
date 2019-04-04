@@ -64,9 +64,7 @@ class NotesController extends Controller
         $request->validate([
             'subject' => 'required|max:255',
             'theme' => 'required|max:255',
-            'isOpen' => 'required'
         ]);
-
 
         $user_id = Auth::user()->id;
         $isOpen = ($request->isOpen == 'true') ? 1 : 0;
@@ -75,7 +73,6 @@ class NotesController extends Controller
 
         $note = Note::create([
             'subject_id' => $subject_id,
-            'isOpen' => $isOpen,
             'leftColumn' => ($request->leftColumn) ? $request->leftColumn : 'Здесь ваши вопросы и замечания по ходу лекции',
             'rightColumn' =>($request->rightColumn) ? $request->rightColumn : 'Здесь ваша основная лекция',
             'bottemColumn' => ($request->bottemColumn) ? $request->rightColumn : 'Здесь ваши выводы по работе',
@@ -84,6 +81,7 @@ class NotesController extends Controller
 
         $note->user()->attach($user_id);
         flash('Запись добавлена')->success();
+
         return redirect()->route('user', ['id' => $user_id]);
     }
 
@@ -138,13 +136,11 @@ class NotesController extends Controller
         $this->validate($request,  [
             'theme' => 'required',
             'subject' => 'required',
-            'isOpen' => 'required'
          ]);
 
         $user_id =Auth::user()->id;
         $user = User::find($user_id);
         $note = Note::find($id);
-        $isOpen = ($request->isOpen == 'true') ? 1 : 0;
 
         if(!$note) {
             abort(404);
@@ -154,7 +150,6 @@ class NotesController extends Controller
 
         foreach ($note->user as $user) {
             if($user->pivot->user_id === $user_id) {
-                $note->isOpen = $isOpen;
                 $note->theme = $request->theme;
                 $note->leftColumn = $request->leftColumn;
                 $note->rightColumn = $request->rightColumn;
