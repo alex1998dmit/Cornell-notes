@@ -27,24 +27,7 @@
                 <div class="tab-pane show active" id="pills-lections" role="tabpanel" aria-labelledby="pills-lections-tab">
                     <h2 class="mb-4">Лекции:</h2>
                     @foreach ($notes as $note)
-                        <div class="card block-shadow my-3">
-                            <a href="{{ route('note.show', ['id' => $note->id]) }}" class="block-link"></a>
-                            <div class="card-header bg-primary text-white d-flex">
-                                <span class="h4 mb-0">{{ $note->theme }}</span>
-                                <div class="ml-auto">
-                                    <a class="card-link lection-card__link link_white  pr-3" href="{{ route('note.edit', ['id' => $note->id])}}" role="button"><i class="fas fa-pen"></i></a>
-                                    <a class="card-link lection-card__link link_white  delete-button" href="#" role="button" data-id={{ $note->id }}>
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <span class="block-restriction">{{ $note->rightColumn }}</span>
-                                <div class="d-flex mt-3 justify-content-between">
-                                    <a href="{{ route('subject', ['id' => $note->subject->id]) }}" class="card-link lection-card__link">{{ $note->subject->name }}</a>
-                                </div>
-                            </div>
-                        </div>
+                        @include('components.lection-card', ['note' => $note])
                     @endforeach
                 </div>
                 <div class="tab-pane" id="pills-subjects" role="tabpanel" aria-labelledby="pills-subjects-tab">
