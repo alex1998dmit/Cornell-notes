@@ -7,56 +7,63 @@
             <div class="jumbotron bg-white mb-3 pb-3 shadow">
                 <img class="profile-avatar img-fluid rounded" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
                 <span class="d-block h4 mt-2 mb-0">{{ Auth::user()->name }} {{ Auth::user()->surname }}</span>
-                <span class="h6 lead"><small>{{ Auth::user()->email }}</small></span>
+                <span class="h6 lead"><small class="text-restriction">{{ Auth::user()->email }}</small></span>
             </div>
-            <div class="list-group mb-3 shadow">
-                <a href="#lections" class="list-group-item list-group-item-action active">Лекции</a>
-                <a href="#subjects" class="list-group-item list-group-item-action">Темы</a>
-            </div>
-            <div class="list-group shadow">
+            <ul class="list-group nav nav-pills shadow rounded my-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a href="#pills-lections" class="list-group-item list-group-item-action active border-0" id="pills-lections-tab" data-toggle="pill" role="tab" aria-controls="pills-lections" aria-selected="true">Лекции</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#pills-subjects" class="list-group-item list-group-item-action border-0" id="pills-subjects-tab" data-toggle="pill" role="tab" aria-controls="pills-subjects" aria-selected="false">Темы</a>
+                </li>
+            </ul>
+            <div class="list-group shadow my-3">
                 <a href="{{ route('logout') }}" class="list-group-item list-group-item-action" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
             </div>
         </div>
-        <div class="jumbotron bg-white col shadow">
-            <div id="lections">
-                <h2>Лекции:</h2>
-                @foreach ($notes as $note)
-                    <div class="card">
-                        <div class="card-header bg-success text-white d-flex">
-                            <span class="h4 mb-0">{{ $note->subject->name }}</span>
-                            <div class="ml-auto">
-                                <a class="text-white pr-3" href="{{ route('note.edit', ['id' => $note->id])}}"><i class="fas fa-pen"></i></a>
-                                <a class="delete-button text-white" data-id={{ $note->id }}>
-                                    <i class="fas fa-times"></i>
-                                </a>
+        <div class="col">
+            <div class="jumbotron bg-white shadow tab-content" id="pills-tabContent">
+                <div class="tab-pane show active" id="pills-lections" role="tabpanel" aria-labelledby="pills-lections-tab">
+                    <h2 class="mb-4">Лекции:</h2>
+                    @foreach ($notes as $note)
+                        <div class="card block-shadow my-3">
+                            <a href="#" class="block-link"></a>
+                            <div class="card-header bg-primary text-white d-flex">
+                                <span class="h4 mb-0">{{ $note->theme }}</span>
+                                <div class="ml-auto">
+                                    <a class="card-link lection-card__link link_white  pr-3" href="{{ route('note.edit', ['id' => $note->id])}}" role="button"><i class="fas fa-pen"></i></a>
+                                    <a class="card-link lection-card__link link_white  delete-button" href="#" role="button" data-id={{ $note->id }}>
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <span class="block-restriction">{{ $note->rightColumn }}</span>
+                                <div class="d-flex mt-3 justify-content-between">
+                                    <a href="{{ route('subject', ['id' => $note->subject->id]) }}" class="card-link lection-card__link">{{ $note->subject->name }}</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <span class="limited-text">{{ $note->rightColumn }}</span>
+                    @endforeach
+                </div>
+                <div class="tab-pane" id="pills-subjects" role="tabpanel" aria-labelledby="pills-subjects-tab">
+                    <h2 class="mb-4">Темы:</h2>
+                    @foreach ($subjects as $subject)
+                    <div class="card block-shadow my-3">
+                        <div class="card-header bg-primary text-white d-flex">
+                            <a href="{{ route('subject', ['id' => $subject->id]) }}" class="block-link"></a>
+                            <span class="h4 mb-0">{{ $subject->name }}</span>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
 </main>
 
 <!-- <div class="row mt-5">
-    <div class="col-sm-3">
-        <div class="row">
-            <img class="profile__avatar img-fluid" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
-        <h2 class="pt-3 mb-0"> {{ Auth::user()->name }}</h2>
-        {{-- !!!!! --}}
-        {{-- <h2 class="pt-3 mb-0"> {{ Auth::user()->surname }}</h2> --}}
-            <div class="w-100"></div>
-            <p>{{ Auth::user()->email }}</p>
-            <div class="w-100"></div>
-            <span class="h5">Предметов: {{ count($subjects)}}</span>
-            <div class="w-100"></div>
-            <span class="h5">Лекций: {{ count($notes) }}</span>
-        </div>
-    </div>
     <div class="col-sm-9">
         <div class="ml-5">
             @if(count($notes) == 0)

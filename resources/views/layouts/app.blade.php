@@ -37,6 +37,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         @guest
                         <li class="nav-item">
@@ -51,33 +54,10 @@
                                 <i class="fas fa-plus"></i>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="menu-avatar" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
+                        <li class="nav-item d-flex align-items-center">
+                            <a href="{{ route('user', ['id' => Auth::user()->id]) }}" class="nav-link">
+                                <i class="far fa-user"></i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ route('user', ['id' => Auth::user()->id]) }}">Профиль</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</a>
-                            </div>
-                            <ul class="dropdown-menu dropdown-menu-right ">
-                                <li class="text-center">
-                                    <a href="{{ route('user', ['id' => Auth::user()->id]) }}">
-                                        Профиль
-                                    </a>
-                                </li>
-                                <div class="dropdown-divider"></div>
-                                <li class="text-center">
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        Выйти
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-
-                            </ul>
                         </li>
                         @endguest
                     </ul>
@@ -85,10 +65,8 @@
             </div>
         </nav>
     </div>
-    <div class="row">
-        <div class="container mt-3">
-            @yield('content')
-        </div>
+    <div class="container mt-3">
+        @yield('content')
     </div>
 
     <script src="{{ asset('js/scripts.js')}}"></script>

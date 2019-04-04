@@ -16,3 +16,45 @@ body {
 .profile-avatar {
     background-size: cover;
 }
+
+.block-restriction {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.text-restriction {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.block-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.lection-card__link {
+    position: relative;
+    z-index: 1;
+}
+
+.link_white {
+    color: white;
+}
+
+.link_white:hover {
+    color: rgba(255, 255, 255, 0.5);
+}
+..block-shadow {
+    transition: box-shadow .3s;
+}
+
+.block-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
