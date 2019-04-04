@@ -19,33 +19,41 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
 </head>
 <body class="min-vh-100">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-primary shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Cornell's notes
+                <a href="{{ url('/') }}" class="navbar-brand mr-4 font-weight-bold">
+                    CornellNotes
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
                         @guest
-                        <li class="pr-2"><a href="{{ route('login') }}">Вход</a></li>
-                        <li><a href="{{ route('register') }}">Регистрация</a></li>
-                        @else
-                        <li class="mr-3">
-                            <a class="btn btn-success text-white" href="{{ route('note.create') }}">Создать лекцию</a>
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">Вход</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle menus" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                <img class="menu__avatar ml-2 mr-2" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link">Регистрация</a>
+                        </li>
+                        @else
+                        <li class="nav-item d-flex align-items-center">
+                            <a href="{{ route('note.create') }}" class="nav-link">
+                                <i class="fas fa-plus"></i>
                             </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="menu__avatar" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{{ route('user', ['id' => Auth::user()->id]) }}">Профиль</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</a>
+                            </div>
                             <ul class="dropdown-menu dropdown-menu-right ">
                                 <li class="text-center">
                                     <a href="{{ route('user', ['id' => Auth::user()->id]) }}">
@@ -72,10 +80,10 @@
             </div>
         </nav>
     </div>
-    <div class="container mt-3 mb-3">
-        {{-- Flash --}}
-        @include('flash::message')
-        @yield('content')
+    <div class="row">
+        <div class="container">
+            @yield('content')
+        </div>
     </div>
     <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
