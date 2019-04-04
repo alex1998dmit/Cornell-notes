@@ -97,19 +97,12 @@
                                     <span class="invalid-feedback" role="alert">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
-                                                    {{-- !!!!!--}}
-                        {{-- <div class="form-group row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
-                                <div class="col-md-6">
-                                    <input id="surname" type="text" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" name="surname" value="{{ old('surname') }}" required autofocus>
-                                    @if ($errors->has('surname'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('surname') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div> --}}
-                            {{-- !!!!!! --}}
+                            <div class="form-group string required">
+                                <input class="form-control string form-control{{ $errors->has('surname') ? ' is-invalid' : '' }} required" autofocus="autofocus" placeholder="{{ __('фамилия') }}" type="text" name="surname" id="surname" value="{{ old('surname') }}">
+                                @if ($errors->has('surname'))
+                                    <span class="invalid-feedback" role="alert">{{ $errors->first('surname') }}</span>
+                                @endif
+                            </div>
                             <div class="form-group email required">
                                 <input class="form-control string email form-control{{ $errors->has('email') ? ' is-invalid' : '' }} required" placeholder="{{ __('e-mail') }}" type="email" name="email" id="email" value="{{ old('email') }}">
                                 @if ($errors->has('email'))
