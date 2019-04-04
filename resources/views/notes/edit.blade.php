@@ -30,9 +30,7 @@
             <hr>
             <div class="form-group">
                 <label for="">Основные мысли</label>
-                <textarea class="form-control" name="leftColumn" id="leftColumn" rows="10">
-                    {{$note->leftColumn}}
-                </textarea>
+                <textarea class="form-control" name="leftColumn" id="leftColumn" rows="10">{{$note->leftColumn}}</textarea>
             </div>
             <div class="form-group">
                 <label for="">Лекция</label>
