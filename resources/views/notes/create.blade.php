@@ -44,5 +44,3 @@
         </form>
     </main>
 @endsection
-
-
