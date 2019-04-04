@@ -1,7 +1,48 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="row mt-5">
+<main role="main">
+    <div class="row justify-content-between">
+        <div class="col-md-4 col-lg-3 mr-md-5 text-center text-md-left">
+            <div class="jumbotron bg-white mb-3 pb-3 shadow">
+                <img class="profile-avatar img-fluid rounded" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
+                <span class="d-block h4 mt-2 mb-0">{{ Auth::user()->name }} {{ Auth::user()->surname }}</span>
+                <span class="h6 lead"><small>{{ Auth::user()->email }}</small></span>
+            </div>
+            <div class="list-group mb-3 shadow">
+                <a href="#lections" class="list-group-item list-group-item-action active">Лекции</a>
+                <a href="#subjects" class="list-group-item list-group-item-action">Темы</a>
+            </div>
+            <div class="list-group shadow">
+                <a href="{{ route('logout') }}" class="list-group-item list-group-item-action" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+            </div>
+        </div>
+        <div class="jumbotron bg-white col shadow">
+            <div id="lections">
+                <h2>Лекции:</h2>
+                @foreach ($notes as $note)
+                    <div class="card">
+                        <div class="card-header bg-success text-white d-flex">
+                            <span class="h4 mb-0">{{ $note->subject->name }}</span>
+                            <div class="ml-auto">
+                                <a class="text-white pr-3" href="{{ route('note.edit', ['id' => $note->id])}}"><i class="fas fa-pen"></i></a>
+                                <a class="delete-button text-white" data-id={{ $note->id }}>
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <span class="limited-text">{{ $note->rightColumn }}</span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- <div class="row mt-5">
     <div class="col-sm-3">
         <div class="row">
             <img class="profile__avatar img-fluid" src="{{asset('uploads/avatars/'.Auth::user()->avatar)}}" alt="avatar">
@@ -112,48 +153,45 @@
                 </div>
             @endif
         </div>
-    </div>
-    <script>
+    </div> -->
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    let url_note_delete = "{{ route('note.delete') }}";
+    let url_subject_delete = "{{ route('subject.delete') }}";
 
-        let url_note_delete = "{{ route('note.delete') }}";
-        let url_subject_delete = "{{ route('subject.delete') }}";
-
-        $(document).on("click", '.delete-button', function(e){
-            e.preventDefault();
-            let id = $(this).data('id');
-            $.ajax({
-                    url:url_note_delete,
-                    type: 'post',
-                    data:{ id: id, _token: CSRF_TOKEN },
-                    dataType: 'json',
-                    success: function(data) {
-                        $(` div[data-noteid= ${data.id} ] `).remove();
-                    },
-                });
-            });
-
-        $(document).on("click", '.delete-button-subject', function(e){
-            e.preventDefault();
-            let id = $(this).data('id');
-            $.ajax({
-                url:url_subject_delete,
+    $(document).on("click", '.delete-button', function(e){
+        e.preventDefault();
+        let id = $(this).data('id');
+        $.ajax({
+                url:url_note_delete,
                 type: 'post',
                 data:{ id: id, _token: CSRF_TOKEN },
                 dataType: 'json',
                 success: function(data) {
-                    $(` div[data-subid= ${data.id} ] `).remove();
+                    $(` div[data-noteid= ${data.id} ] `).remove();
                 },
             });
         });
-        
-    </script>
-    @endsection
-</div>
+
+    $(document).on("click", '.delete-button-subject', function(e){
+        e.preventDefault();
+        let id = $(this).data('id');
+        $.ajax({
+            url:url_subject_delete,
+            type: 'post',
+            data:{ id: id, _token: CSRF_TOKEN },
+            dataType: 'json',
+            success: function(data) {
+                $(` div[data-subid= ${data.id} ] `).remove();
+            },
+        });
+    });
+</script>
+@endsection
