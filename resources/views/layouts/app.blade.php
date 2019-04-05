@@ -65,9 +65,21 @@
             </div>
         </nav>
     </div>
-    <div class="container mt-3">
+    <div class="container mt-3 mb-4">
         @yield('content')
     </div>
+    <footer class="bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <div class="footer-copyright text-center py-3">
+                        <span class="text-white">© 2019 Copyright:</span>
+                        <a href="{{ url('/') }}" class="link_white">Cornell Notes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="{{ asset('js/scripts.js')}}"></script>
     {{-- Flash --}}
