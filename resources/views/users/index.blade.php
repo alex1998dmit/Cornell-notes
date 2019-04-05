@@ -22,7 +22,7 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
             </div>
         </div>
-        <div class="col">
+        <div class="col-md-7 col-lg-8">
             <div class="jumbotron bg-white shadow tab-content" id="pills-tabContent">    
                 <div class="tab-pane show active" id="pills-lections" role="tabpanel" aria-labelledby="pills-lections-tab">
                     @if(count($notes) === 0)
