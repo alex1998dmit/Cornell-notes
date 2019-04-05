@@ -23,23 +23,37 @@
             </div>
         </div>
         <div class="col">
-            <div class="jumbotron bg-white shadow tab-content" id="pills-tabContent">
+            <div class="jumbotron bg-white shadow tab-content" id="pills-tabContent">    
                 <div class="tab-pane show active" id="pills-lections" role="tabpanel" aria-labelledby="pills-lections-tab">
-                    <h2 class="mb-4">Лекции:</h2>
-                    @foreach ($notes as $note)
-                        @include('components.lection-card', ['note' => $note])
-                    @endforeach
+                    @if(count($notes) === 0)
+                        <div class="text-center">
+                            <h2>У вас нет лекций</h2>
+                            <a class="btn btn-success" href="{{ route('note.create') }}">Создать</a>
+                        </div>
+                    @else
+                        <h2 class="mb-4">Лекции:</h2>
+                        @foreach ($notes as $note)
+                            @include('components.lection-card', ['note' => $note])
+                        @endforeach
+                    @endif
                 </div>
                 <div class="tab-pane" id="pills-subjects" role="tabpanel" aria-labelledby="pills-subjects-tab">
-                    <h2 class="mb-4">Темы:</h2>
-                    @foreach ($subjects as $subject)
-                    <div class="card block-shadow my-3">
-                        <div class="card-header bg-primary text-white d-flex">
-                            <a href="{{ route('subject', ['id' => $subject->id]) }}" class="block-link"></a>
-                            <span class="h4 mb-0">{{ $subject->name }}</span>
+                    @if(count($notes) === 0)
+                        <div class="text-center">
+                            <h2>У вас нет тем</h2>
+                            <a class="btn btn-success" href="{{ route('note.create') }}">Создать</a>
                         </div>
-                    </div>
-                    @endforeach
+                    @else
+                        <h2 class="mb-4">Темы:</h2>
+                        @foreach ($subjects as $subject)
+                        <div class="card block-shadow my-3">
+                            <div class="card-header bg-primary text-white d-flex">
+                                <a href="{{ route('subject', ['id' => $subject->id]) }}" class="block-link"></a>
+                                <span class="h4 mb-0">{{ $subject->name }}</span>
+                            </div>
+                        </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
