@@ -7,64 +7,27 @@ body {
     background-color: whitesmoke !important;
 }
 
-.register-card {
-    border: none;
-}
-
 .menu-avatar {
     width: 30px;
     height: 30px;
     border-radius: 50%;
 }
 
-.lection-card {
-    position: relative;
-    border: 1px solid #ECEDF0;
-    border-radius: 5px;
+.profile-avatar {
+    background-size: cover;
 }
 
-.lection-card:hover {
-    background-color: #ddd;
+.block-restriction {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
 }
 
-.lection-card:hover .lection-card__btn {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility ease-in 300ms, opacity ease-in 300ms;
-}
-
-.lection-card__btn {
-    position: relative;
-    z-index: 2;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility ease-in 300ms, opacity ease-in 300ms;
-}
-
-.lection:hover .lection__theme-delete {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility ease-in 300ms, opacity ease-in 300ms;
-}
-
-.lection__theme-delete {
-    position: relative;
-    z-index: 2;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility ease-in 300ms, opacity ease-in 300ms;
-}
-
-.lection-card__title {
-    font-size: 1.2rem;
-}
-
-.lection__more:hover {
-    text-decoration: none;
-}
-
-.lection-card__edit {
-    color: #fff;
+.text-restriction {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .block-link {
@@ -76,19 +39,22 @@ body {
     z-index: 1;
 }
 
-.dropdown-arrow {
-    cursor: pointer;
+.lection-card__link {
+    position: relative;
+    z-index: 1;
 }
 
-.dropdown-toggle::after {
-    display: none;
+.link_white {
+    color: white;
 }
 
-.menu:hover {
-    text-decoration: none;
+.link_white:hover {
+    color: rgba(255, 255, 255, 0.5);
+}
+..block-shadow {
+    transition: box-shadow .3s;
 }
 
-.profile__avatar {
-    border-radius: 5px;
-    background-size: cover;
+.block-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
 }
