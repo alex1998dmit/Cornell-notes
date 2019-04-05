@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="card-body">
-        <pre class="block-restriction mw-100">{{ $note->rightColumn }}</pre>
+        <pre class="block-restriction mw-100">{{ $note->leftColumn }}</pre>
         <div class="d-flex mt-3 justify-content-between">
             <a href="{{ route('subject', ['id' => $note->subject->id]) }}" class="card-link lection-card__link">{{ $note->subject->name }}</a>
         </div>
