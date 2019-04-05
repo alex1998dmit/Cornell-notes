@@ -72,7 +72,6 @@
         });
 
     </script>
-    @endsection
 </div>
 
 @endsection
