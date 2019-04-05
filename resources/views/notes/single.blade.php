@@ -15,7 +15,7 @@
             </div>
             <div class="form-group">
                 <label for="">Резюме</label>
-                <textarea class="form-control" name="bottemColumn" id="bottemColumn" rows="10" readonly>{{$note->bottembColumn}}</textarea>
+                <textarea class="form-control" name="bottemColumn" id="bottemColumn" rows="10" readonly>{{$note->bottemColumn}}</textarea>
             </div>
             <a class="btn btn-primary" href="{{ route('note.edit', ['id' => $note->id])}}" role="button">Редактировать</a>
             <a class="btn btn-danger text-white" href="{{ route('note.trash', ['id' => $note->id]) }}}">Удалить</a>
