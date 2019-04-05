@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label for="">Резюме</label>
-                <textarea class="form-control" name="bottemColumn" id="bottemColumn" rows="10">{{$note->bottembColumn}}</textarea>
+                <textarea class="form-control" name="bottemColumn" id="bottemColumn" rows="10">{{$note->bottemgitColumn}}</textarea>
             </div>
             <button class="btn btn-success" type="submit">Сохранить</button>
             <a class="btn btn-danger text-white" href="{{ route('note.trash', ['id' => $note->id]) }}}">Удалить</a>
