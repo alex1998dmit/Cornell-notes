@@ -85,18 +85,7 @@
             });
         });
 
-    $(document).on("click", '.delete-button-subject', function(e){
-        e.preventDefault();
-        let id = $(this).data('id');
-        $.ajax({
-            url:url_subject_delete,
-            type: 'post',
-            data:{ id: id, _token: CSRF_TOKEN },
-            dataType: 'json',
-            success: function(data) {
-                $(` div[data-subid= ${data.id} ] `).remove();
-            },
-        });
-    });
-</script>
+    </script>
+</div>
+
 @endsection

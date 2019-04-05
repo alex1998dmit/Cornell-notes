@@ -1,4 +1,4 @@
-<div class="card block-shadow my-3">
+<div class="card block-shadow my-3" data-noteid={{ $note->id }}>
     <a href="{{ route('note.show', ['id' => $note->id]) }}" class="block-link"></a>
     <div class="card-header bg-primary text-white d-flex">
         <span class="h4 mb-0">{{ $note->theme }}</span>
