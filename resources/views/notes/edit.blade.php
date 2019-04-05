@@ -10,7 +10,7 @@
     @endif
     <main role="main">
         <h1 class="display-4 my-4">Редактирование лекции</h1>
-        <form action="{{ route('note.store') }}" method="post">
+        <form action="{{ route('note.update', ['id' => $note->id]) }}" method="post">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="note-title">Тема</label>

@@ -133,6 +133,7 @@ class NotesController extends Controller
     public function update(Request $request, $id)
     {
         //
+
         $this->validate($request,  [
             'theme' => 'required',
             'subject' => 'required',
@@ -145,6 +146,7 @@ class NotesController extends Controller
         if(!$note) {
             abort(404);
         }
+
 
         $subject_id = $this->getSubjectId($request->subject, $user_id);
 
