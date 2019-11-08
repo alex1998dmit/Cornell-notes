@@ -13,3 +13,9 @@ The Cornell method provides a systematic format for condensing and organizing no
 ## Example
 
 ![](https://media.giphy.com/media/jp3C9Bwyc6nHgdoZDc/giphy.gif)
+
+## Features
+* Rewrite client logic to spa
+* Write Rest API routes for appilication
+* JWT Authentication
+* Markdown
